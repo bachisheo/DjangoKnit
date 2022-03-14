@@ -11,7 +11,9 @@ workon django_knit
 ##update settings.py
 python manage.py migrate
 python manage.py createsuperuser
-### обновить модель
+### Change a model
+###  create migrations for those changes
 python manage.py makemigrations djangoapp
-
+###apply those changes to the database.
+python manage.py migrate
 
