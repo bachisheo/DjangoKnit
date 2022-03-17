@@ -7,7 +7,7 @@ from .models import Product
 
 class IndexView(ListView):
     model = Product
-    template_name = 'index.html'
+    template_name = 'djangoapp/index.html'
 
 def detail(request, product_id):
     return HttpResponse("it's detail of %s." % product_id)
