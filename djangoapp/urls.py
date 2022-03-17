@@ -11,7 +11,7 @@ There it matches '<int:product_id>/', resulting in a call to the detail() view l
 '''
 urlpatterns = [
     # ex: /knit/
-    path('', views.index, name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     # ex: /knit/12/
     path('<int:product_id>', views.detail, name='detail'),
     # ex: /knit/12/edit
