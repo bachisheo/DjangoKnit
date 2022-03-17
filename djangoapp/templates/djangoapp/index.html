@@ -6,7 +6,7 @@
             {% for card in product_list %}
             <div class=" col-6 col-md-5 col-lg-4 col-xl-3 card-container">
                 <div class="card">
-                    <a href="product_view.html" class="stretched-link"></a>
+                    <a href="detail.html" class="stretched-link"></a>
                     <div class="image-container ">
                         <div class="square-image card-img-top " style="background-image: url({% static 'img/infinity.png' %});"></div>
                     </div>
@@ -14,7 +14,7 @@
                         <p class="card-subtitle">{{ card.name }}</p>
                         <div class="row justify-content-between ">
                             <h5 class="col card-title">{{ card.price }} ₽</h5>
-                            <img class="col-auto" src="/src/heart.png" width="25" height="25" alt="">
+                            <img class="col-auto" src="{% static 'img/heart.png' %}" width="25" height="25" alt="">
                         </div>
                          {% if card.count < 5 and card.count > 0%}
                         <p class="card-text"><small class="text-danger"> Осталось {{ card.count }} шт.!</small></p>
