@@ -1,7 +1,7 @@
 from django import forms
-from .models import Product
+from .models import Product, Category
 
-
+categories = Category.objects.all().values_list('name')
 # creating a form
 class ProductForm(forms.ModelForm):
     # create meta class
@@ -15,11 +15,14 @@ class ProductForm(forms.ModelForm):
             "description",
             "price",
             "count",
+            "category"
         ]
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'item-name', 'type': 'text'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'id': 'about-textarea'}),
+            'price': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
+            'count': forms.TextInput(attrs={'class': 'form-control', 'id': 'count-textarea', 'type': 'number'}),
+            'category': forms.Select(choices=categories, attrs={'class': 'form-select', 'id': 'category-select'}),
 
-    def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs.update({'class': 'form-control', 'id': 'item-name', 'type': 'text'})
-        self.fields['description'].widget.attrs.update({'class': 'form-control', 'id': 'about-textarea'})
-        self.fields['price'].widget.attrs.update({'class': 'form-control', 'type': 'number'})
-        self.fields['count'].widget.attrs.update({'class': 'form-control', 'id': 'count-textarea', 'type': 'number'})
+        }
+

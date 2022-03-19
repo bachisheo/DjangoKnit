@@ -58,10 +58,12 @@
                                 {{ product.description }}
                             </p>
                             <p class="text">
-                                Категория:{{ product.category }}<br>
+                                Категория: {{ product.category }}<br>
                                 Материал: Пряжа<br>
-                                Статус: Под заказ
+                                {% if product.is_to_order %}Изгоавливается под заказ.<br>{% endif %}
+                                {% if product.count > 0 %}В наличии {{ product.count }} шт.<br>{% endif %}
                             </p>
+                         {% if product.is_to_order == False and product.count == 0 %}<p class="text text-danger">Нет в наличии!<br></p>{% endif %}
                             <a href="#" class="btn btn-primary">Оформить заказ</a>
                             <p class="pt-3 m-0">Елена Никитишна</p>
                             <p><small class="text-muted">Продано 43 товара</small></p>

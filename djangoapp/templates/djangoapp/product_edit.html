@@ -23,12 +23,8 @@
         </div>
         <div class="mb-3 col-sm-6">
             <label for="category-select" class="form-label">Категория</label>
-            <select class="form-select" id="category-select">
-                <option selected>Не указано</option>
-                <option value="1">Одежда</option>
-                <option value="2">Декор</option>
-                <option value="3">Украшения</option>
-            </select>
+            {{ form.category }}
+
         </div>
         <div class="mb-3 col-sm-6">
             <label for="material-select" class="form-label">Материалы</label>
