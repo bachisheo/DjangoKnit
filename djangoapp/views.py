@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import ListView, UpdateView, DetailView, CreateView
+from django.views.generic import ListView, UpdateView, DetailView, CreateView, DeleteView
 
 from .forms import ProductForm
 from .models import Product
@@ -12,11 +12,13 @@ from django.urls import reverse_lazy
 class IndexView(ListView):
     model = Product
     template_name = 'djangoapp/index.html'
+    ordering = ['-id']
 
 
 class MonitorView(ListView):
     model = Product
     template_name = 'djangoapp/products_monitor.html'
+    ordering = ['-id']
 
 
 class ProductUpdateView(UpdateView):
@@ -36,6 +38,11 @@ class ProductAddView(CreateView):
     template_name = 'djangoapp/product_edit.html'
     success_url = reverse_lazy('monitor')
 
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'djangoapp/confirm_delete.html'
+    success_url = reverse_lazy('monitor')
 
 '''
 # called by "update" button pressing

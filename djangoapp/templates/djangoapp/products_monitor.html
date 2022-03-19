@@ -24,7 +24,7 @@
                         <div class=" row justify-content-center p-2 ">
                           <a href="{% url 'edit' product.id %}" class="col-5 btn btn-outline-primary border-0 m-1"><img class="col-auto"
                               src="{% static 'img/edit.png' %}" width="25" height="25" alt=""></a>
-                          <a href="#" class="col-5 btn btn-outline-danger border-0 m-1"><img class="col-auto" src="{% static 'img/delete.png' %}"
+                          <a href="{% url 'delete' product.id %}" class="col-5 btn btn-outline-danger border-0 m-1"><img class="col-auto" src="{% static 'img/delete.png' %}"
                               width="25" height="25" alt=""></a>
                         </div>
                       </div>

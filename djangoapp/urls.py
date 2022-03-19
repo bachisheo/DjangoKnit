@@ -19,5 +19,6 @@ urlpatterns = [
     # ex: /knit/12/edit
     path('new_product/', views.ProductAddView.as_view(), name='new_product'),
     path('<int:pk>/edit/', views.ProductUpdateView.as_view(), name='edit'),
+    path('<int:pk>/delete/', views.ProductDeleteView.as_view(), name='delete'),
 
 ]
