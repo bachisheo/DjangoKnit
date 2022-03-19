@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -12,12 +13,16 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.SET(1))
+    category = models.ForeignKey(Category, on_delete=models.SET(1), default='1')
     name = models.CharField(max_length=300)
     count = models.IntegerField()
     price = models.IntegerField(default=0)
     description = models.TextField()
-    is_to_order = models.BooleanField()
+    is_to_order = models.BooleanField(default="False")
 
     def __str__(self):
         return self.name
+
+    # redirect from adding
+    def get_absolute_url(self):
+        return reverse('detail', args=(str(self.id)))

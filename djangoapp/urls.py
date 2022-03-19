@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+
 '''
 When somebody requests a page from your website – say, “/knit/34/”, 
 Django will load the mysite.urls Python module because it’s pointed to by the ROOT_URLCONF setting.
@@ -14,8 +15,9 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('monitor', views.MonitorView.as_view(), name='monitor'),
     # ex: /knit/12/
-    path('<int:product_id>', views.detail, name='detail'),
+    path('<int:pk>/detail/', views.ProductDetailView.as_view(), name='detail'),
     # ex: /knit/12/edit
-    path('<int:product_id>/edit', views.edit, name='edit'),
+    path('new_product/', views.ProductAddView.as_view(), name='new_product'),
+    path('<int:pk>/edit/', views.ProductUpdateView.as_view(), name='edit'),
 
 ]

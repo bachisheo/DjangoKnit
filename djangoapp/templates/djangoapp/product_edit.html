@@ -1,15 +1,17 @@
  {% extends 'djangoapp/base.html' %}
  {% load static %}
  {% block content %}
+
     <main class="container col-md-8" id="content">
         <h3>Редактирование товара</h3>
-        <div class="mb-3">
+        <form method="post">{% csrf_token %}
+            <div class="mb-3">
             <label for="item-name" class="form-label">Название</label>
-            <input type="text" class="form-control" id="item-name">
+            {{ form.name }}
         </div>
         <div class="mb-3">
             <label for="about-textarea" class="form-label">Описание</label>
-            <textarea class="form-control" id="about-textarea" rows="3"></textarea>
+           {{ form.description }}
         </div>
         <div class="mb-3">
             <label for="choose-foto" class="form-label">Фото</label>
@@ -40,30 +42,32 @@
         <div class="mb-3 col-sm-6">
             <label for="item-name" class="form-label">Стоимость</label>
             <div class="input-group">
-                <input type="number" class="form-control">
+                  {{ form.price }}
                 <span class="input-group-text"> ₽</span>
             </div>
         </div>
         <div class="mb-3 col-sm-6">
             <label for="count-textarea" class="form-label">В наличии</label>
             <div class="input-group">
-                <input type="number" class="form-control" id="count-textarea">
+                {{ form.count }}
                 <span class="input-group-text"> шт.</span>
             </div>
         </div>
         <div class="col col-md-6 form-check mb-4 align-self-end ">
-            <input class="form-check-input" type="checkbox" value="" id="is-to-order">
+            <input class="form-check-input" type="checkbox" id="is-to-order">
             <label class="form-check-label" for="is-to-order">
                 Изготавливается под заказ
             </label>
         </div>
         <div class="row justify-content-around mb-3">
             <div class="col-auto">
-                <a href="#" class="btn btn-secondary">Отмена</a>
+                <a href="{% url 'monitor' %}" class="btn btn-secondary">Отмена</a>
             </div>
             <div class="col-auto ">
-                <a href="#" class="btn btn-primary">Сохранить</a>
+              <input type="submit" value="Сохранить" class="btn btn-primary" id="save">
             </div>
         </div>
+                 </form>
+
     </main>
 {% endblock %}
