@@ -15,7 +15,8 @@ class ProductForm(forms.ModelForm):
             "description",
             "price",
             "count",
-            "category"
+            "category",
+            "image"
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'item-name', 'type': 'text'}),
@@ -23,6 +24,7 @@ class ProductForm(forms.ModelForm):
             'price': forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}),
             'count': forms.TextInput(attrs={'class': 'form-control', 'id': 'count-textarea', 'type': 'number'}),
             'category': forms.Select(choices=categories, attrs={'class': 'form-select', 'id': 'category-select'}),
+            #'image': forms.ImageField(attrs={'id': 'choose-foto'})
 
         }
 

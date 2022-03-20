@@ -4,7 +4,7 @@
 
     <main class="container col-md-8" id="content">
         <h3>Редактирование товара</h3>
-        <form method="post">{% csrf_token %}
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
             <div class="mb-3">
             <label for="item-name" class="form-label">Название</label>
             {{ form.name }}
@@ -16,6 +16,7 @@
         <div class="mb-3">
             <label for="choose-foto" class="form-label">Фото</label>
             <div class="input-group">
+                 {{ form.image }}
                 <input type="file" class="form-control" id="choose-foto" aria-describedby="btn-upload"
                     aria-label="Upload">
                 <button class="btn btn-outline-secondary" type="button" id="btn-upload">Загрузить</button>
@@ -26,15 +27,7 @@
             {{ form.category }}
 
         </div>
-        <div class="mb-3 col-sm-6">
-            <label for="material-select" class="form-label">Материалы</label>
-            <select class="form-select" id="material-select">
-                <option selected>Не указано</option>
-                <option value="1">Пряжа</option>
-                <option value="2">Ткань</option>
-                <option value="3">Дерево</option>
-            </select>
-        </div>
+
         <div class="mb-3 col-sm-6">
             <label for="item-name" class="form-label">Стоимость</label>
             <div class="input-group">
